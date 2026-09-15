@@ -1,1291 +1,312 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Our Little Love Story 💕</title>
-
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-
-    font-family:'Quicksand',sans-serif;
-
-    color:#6b4b5a;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffdce8,
-            #ffe8d6,
-            #eee1ff,
-            #dff4ff
-        );
-
-    background-size:400% 400%;
-
-    animation:bgMove 18s ease infinite;
-
-    overflow-x:hidden;
-}
-
-@keyframes bgMove{
-
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-
-}
-
-
-/* =====================================
-   LOADING
-===================================== */
-
-#loader{
-
-    position:fixed;
-    inset:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffdce8,
-            #fff0f5
-        );
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    z-index:9999;
-
-    transition:
-        opacity 1s,
-        visibility 1s;
-}
-
-.loader-box{
-    text-align:center;
-}
-
-.loader-heart{
-
-    font-size:75px;
-
-    animation:
-        heartbeat 1.2s infinite;
-
-}
-
-.loader-text{
-
-    margin-top:15px;
-
-    font-family:'Baloo 2',cursive;
-
-    font-size:18px;
-
-    color:#d47b9b;
-
-    letter-spacing:2px;
-
-}
-
-@keyframes heartbeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.18);
-    }
-
-}
-
-
-/* =====================================
-   FLOATING BUBBLES
-===================================== */
-
-.bubble{
-
-    position:fixed;
-
-    bottom:-100px;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    opacity:.5;
-
-    animation:
-        bubbleUp linear forwards;
-
-    z-index:0;
-}
-
-@keyframes bubbleUp{
-
-    0%{
-
-        transform:
-            translateY(0)
-            scale(.5);
-
-        opacity:0;
-
-    }
-
-    20%{
-        opacity:.6;
-    }
-
-    100%{
-
-        transform:
-            translateY(-120vh)
-            translateX(80px)
-            scale(1.2);
-
-        opacity:0;
-
-    }
-
-}
-
-
-/* =====================================
-   NAVIGATION
-===================================== */
-
-.nav{
-
-    position:fixed;
-
-    top:18px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:calc(100% - 30px);
-
-    max-width:850px;
-
-    padding:12px 18px;
-
-    background:
-        rgba(255,255,255,.55);
-
-    backdrop-filter:blur(18px);
-
-    border:
-        2px solid
-        rgba(255,255,255,.8);
-
-    border-radius:50px;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:25px;
-
-    z-index:1000;
-
-    box-shadow:
-        0 10px 30px rgba(190,120,150,.12);
-
-    opacity:0;
-
-    transition:.5s;
-
-}
-
-.nav.show{
-    opacity:1;
-}
-
-.nav a{
-
-    text-decoration:none;
-
-    color:#9b6d80;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    letter-spacing:1px;
-
-    transition:.3s;
-
-}
-
-.nav a:hover{
-    color:#e27fa3;
-}
-
-
-/* =====================================
-   OPENING
-===================================== */
-
-.opening{
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    padding:30px;
-
-    position:relative;
-
-}
-
-.opening-box{
-
-    max-width:700px;
-
-    animation:
-        openingAnimation 1.5s ease;
-
-}
-
-@keyframes openingAnimation{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(40px)
-            scale(.95);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:none;
-
-    }
-
-}
-
-.eyebrow{
-
-    font-size:12px;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    color:#c47f99;
-
-    margin-bottom:20px;
-
-}
-
-.big-heart{
-
-    font-size:90px;
-
-    filter:
-        drop-shadow(
-            0 10px 15px
-            rgba(220,110,150,.25)
-        );
-
-    animation:
-        heartbeat 1.5s infinite;
-
-}
-
-h1,h2,h3{
-
-    font-family:'Baloo 2',cursive;
-
-}
-
-h1{
-
-    font-size:
-        clamp(
-            50px,
-            10vw,
-            85px
-        );
-
-    color:#d76f99;
-
-    line-height:1;
-
-    margin:20px 0;
-
-}
-
-.opening p{
-
-    max-width:580px;
-
-    margin:auto;
-
-    color:#806675;
-
-    line-height:1.9;
-
-    font-size:16px;
-
-}
-
-.divider{
-
-    width:80px;
-
-    height:5px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff9fbd,
-            #c9a7ed,
-            #91cfe8
-        );
-
-    margin:25px auto;
-
-}
-
-
-/* =====================================
-   BUTTON
-===================================== */
-
-.button{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-    padding:15px 28px;
-
-    margin-top:25px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff8fb1,
-            #e89bc9
-        );
-
-    color:white;
-
-    font-weight:700;
-
-    font-size:13px;
-
-    text-decoration:none;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 10px 25px
-        rgba(221,120,160,.25);
-
-    transition:.35s;
-
-}
-
-.button:hover{
-
-    transform:
-        translateY(-4px)
-        scale(1.03);
-
-    box-shadow:
-        0 15px 30px
-        rgba(221,120,160,.35);
-
-}
-
-
-/* =====================================
-   SECTION
-===================================== */
-
-section{
-
-    padding:
-        100px
-        20px;
-
-}
-
-.box{
-
-    max-width:850px;
-
-    margin:auto;
-
-    padding:50px;
-
-    background:
-        rgba(255,255,255,.55);
-
-    backdrop-filter:
-        blur(18px);
-
-    border:
-        2px solid
-        rgba(255,255,255,.8);
-
-    border-radius:35px;
-
-    box-shadow:
-        0 20px 60px
-        rgba(180,120,150,.13);
-
-    text-align:center;
-
-    opacity:0;
-
-    transform:
-        translateY(40px);
-
-    transition:
-        1s ease;
-
-}
-
-.box.visible{
-
-    opacity:1;
-
-    transform:
-        translateY(0);
-
-}
-
-h2{
-
-    font-size:42px;
-
-    color:#c66f91;
-
-    margin-bottom:10px;
-
-}
-
-.box > p{
-
-    line-height:1.9;
-
-    color:#806675;
-
-}
-
-
-/* =====================================
-   PHOTO
-===================================== */
-
-.photo-frame{
-
-    max-width:450px;
-
-    margin:
-        35px
-        auto
-        25px;
-
-    padding:12px;
-
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffabc4,
-            #ffd4b8,
-            #d7baf0,
-            #a9dff0
-        );
-
-    box-shadow:
-        0 20px 50px
-        rgba(170,100,140,.18);
-
-}
-
-.photo{
-
-    width:100%;
-
-    height:450px;
-
-    object-fit:cover;
-
-    display:block;
-
-    border-radius:22px;
-
-}
-
-.photo-note{
-
-    font-size:13px;
-
-    font-style:italic;
-
-    color:#a27c8b;
-
-}
-
-
-/* =====================================
-   MEMORY CARDS
-===================================== */
-
-.memory-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:15px;
-
-    margin-top:35px;
-
-}
-
-.memory{
-
-    padding:25px 15px;
-
-    border-radius:25px;
-
-    background:
-        rgba(255,255,255,.55);
-
-    border:
-        1px solid
-        rgba(255,255,255,.8);
-
-    transition:.3s;
-
-}
-
-.memory:hover{
-
-    transform:
-        translateY(-7px)
-        rotate(1deg);
-
-}
-
-.memory-icon{
-
-    font-size:35px;
-
-    margin-bottom:10px;
-
-}
-
-.memory strong{
-
-    display:block;
-
-    font-family:'Baloo 2',cursive;
-
-    color:#c87092;
-
-    font-size:18px;
-
-}
-
-.memory span{
-
-    font-size:12px;
-
-    color:#977784;
-
-}
-
-
-/* =====================================
-   MUSIC
-===================================== */
-
-.music-card{
-
-    max-width:500px;
-
-    margin:
-        35px
-        auto
-        0;
-
-    padding:30px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,210,225,.65),
-            rgba(230,215,250,.65)
-        );
-
-    border-radius:30px;
-
-}
-
-.music-disc{
-
-    width:85px;
-
-    height:85px;
-
-    margin:
-        0 auto
-        20px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff9fbd,
-            #cda6ec
-        );
-
-    box-shadow:
-        0 10px 25px
-        rgba(180,100,150,.2);
-
-}
-
-.music-button{
-
-    border:none;
-
-    padding:13px 25px;
-
-    border-radius:50px;
-
-    background:white;
-
-    color:#c76f92;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-}
-
-.music-status{
-
-    margin-top:15px;
-
-    font-size:12px;
-
-    color:#967383;
-
-}
-
-
-/* =====================================
-   COUNTER
-===================================== */
-
-.counter{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:15px;
-
-    margin-top:35px;
-
-}
-
-.counter-item{
-
-    padding:22px 10px;
-
-    border-radius:22px;
-
-    background:
-        rgba(255,255,255,.5);
-
-}
-
-.counter-item strong{
-
-    display:block;
-
-    font-family:'Baloo 2',cursive;
-
-    font-size:40px;
-
-    color:#dc789d;
-
-}
-
-.counter-item span{
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-
-    color:#9a7a87;
-
-}
-
-
-/* =====================================
-   DISTANCE
-===================================== */
-
-.distance{
-
-    font-size:65px;
-
-    margin:30px 0;
-
-}
-
-.love-message{
-
-    font-family:'Baloo 2',cursive;
-
-    font-size:28px;
-
-    color:#d57498;
-
-    min-height:55px;
-
-    margin-top:25px;
-
-}
-
-
-/* =====================================
-   ENVELOPE
-===================================== */
-
-.envelope{
-
-    margin:
-        35px
-        auto;
-
-    width:260px;
-
-    height:180px;
-
-    position:relative;
-
-    cursor:pointer;
-
-    transition:.5s;
-
-}
-
-.envelope:hover{
-
-    transform:
-        translateY(-8px)
-        rotate(-1deg);
-
-}
-
-.envelope-body{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffb6ca,
-            #ffcbd9
-        );
-
-    border-radius:15px;
-
-    box-shadow:
-        0 20px 40px
-        rgba(200,110,140,.2);
-
-}
-
-.envelope-flap{
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:0;
-    height:0;
-
-    border-left:
-        130px solid transparent;
-
-    border-right:
-        130px solid transparent;
-
-    border-top:
-        95px solid #ed91ae;
-
-    transform-origin:top;
-
-    transition:.7s;
-
-    z-index:3;
-
-}
-
-.envelope-heart{
-
-    position:absolute;
-
-    top:65px;
-    left:50%;
-
-    transform:
-        translateX(-50%);
-
-    font-size:40px;
-
-    z-index:4;
-
-}
-
-.envelope.open .envelope-flap{
-
-    transform:
-        rotateX(180deg);
-
-}
-
-.letter{
-
-    display:none;
-
-    margin-top:30px;
-
-    padding:35px;
-
-    background:
-        #fffaf5;
-
-    color:#654b55;
-
-    border-radius:25px;
-
-    text-align:left;
-
-    line-height:2;
-
-    box-shadow:
-        0 20px 50px
-        rgba(150,100,120,.18);
-
-    animation:
-        letterOpen .8s ease;
-
-}
-
-@keyframes letterOpen{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:none;
-
-    }
-
-}
-
-.letter-title{
-
-    text-align:center;
-
-    font-family:'Baloo 2',cursive;
-
-    font-size:30px;
-
-    color:#d27194;
-
-    margin-bottom:20px;
-
-}
-
-.letter-sign{
-
-    text-align:right;
-
-    font-family:'Baloo 2',cursive;
-
-    color:#d27194;
-
-    font-size:22px;
-
-    margin-top:25px;
-
-}
-
-
-/* =====================================
-   COUNTDOWN
-===================================== */
-
-.countdown{
-
-    margin:
-        30px
-        auto;
-
-    font-family:'Baloo 2',cursive;
-
-    font-size:
-        clamp(
-            30px,
-            7vw,
-            55px
-        );
-
-    color:#d97699;
-
-}
-
-.meeting-date{
-
-    color:#987684;
-
-    font-size:13px;
-
-}
-
-
-/* =====================================
-   FINAL
-===================================== */
-
-.final-box{
-
-    padding:
-        80px
-        30px;
-
-}
-
-.final-heart{
-
-    font-size:75px;
-
-    animation:
-        heartbeat 1.5s infinite;
-
-}
-
-.final-title{
-
-    font-size:55px;
-
-    color:#d76f99;
-
-    margin:20px 0;
-
-}
-
-.final-text{
-
-    max-width:550px;
-
-    margin:auto;
-
-    line-height:2;
-
-    color:#806675;
-
-}
-
-
-/* =====================================
-   FOOTER
-===================================== */
-
-footer{
-
-    padding:
-        60px
-        20px;
-
-    text-align:center;
-
-    color:#a07d8b;
-
-    font-size:12px;
-
-}
-
-
-/* =====================================
-   MOBILE
-===================================== */
-
-@media(max-width:600px){
-
-    .nav{
-
-        gap:12px;
-
-        padding:
-            12px 10px;
-
-    }
-
-    .nav a{
-
-        font-size:8px;
-
-    }
-
-    h1{
-
-        font-size:55px;
-
-    }
-
-    h2{
-
-        font-size:34px;
-
-    }
-
-    section{
-
-        padding:
-            70px
-            15px;
-
-    }
-
-    .box{
-
-        padding:
-            30px
-            20px;
-
-        border-radius:28px;
-
-    }
-
-    .photo{
-
-        height:330px;
-
-    }
-
-    .counter{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-    .memory-grid{
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-    .letter{
-
-        padding:25px;
-
-        font-size:14px;
-
-    }
-
-    .final-title{
-
-        font-size:43px;
-
-    }
-
-}
-
-
-/* =====================================
-   REDUCED MOTION
-===================================== */
-
-@media(prefers-reduced-motion:reduce){
-
-    *{
-
-        animation-duration:.01ms !important;
-
-        animation-iteration-count:1 !important;
-
-        scroll-behavior:auto !important;
-
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dear distance</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .opening {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .opening-box {
+            max-width: 600px;
+        }
+
+        .big-heart {
+            font-size: 90px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 20px 0;
+        }
+
+        .opening p {
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            border: none;
+            padding: 14px 25px;
+            margin-top: 25px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+        }
+
+        section {
+            padding: 70px 20px;
+        }
+
+        .box {
+            max-width: 750px;
+            margin: auto;
+            background: rgba(255,255,255,0.16);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        /* FOTO */
+
+        .photo {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 25px;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid rgba(255,255,255,0.7);
+        }
+
+        .photo-note {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* MUSIK */
+
+        .music-box {
+            margin-top: 25px;
+        }
+
+        .music-button {
+            display: inline-block;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .music-button:hover {
+            transform: scale(1.08);
+        }
+
+        .music-status {
+            margin-top: 12px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* COUNTER */
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .counter-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .counter-item strong {
+            display: block;
+            font-size: 30px;
+        }
+
+        /* JARAK */
+
+        .distance {
+            font-size: 50px;
+            margin: 25px;
+        }
+
+        /* SURAT */
+
+        .letter {
+            display: none;
+            margin-top: 30px;
+            background: rgba(255,255,255,0.9);
+            color: #444;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: left;
+            line-height: 1.9;
+            animation: muncul 0.8s;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* KANGEN */
+
+        #kangen {
+            font-size: 25px;
+            margin-top: 20px;
+            min-height: 40px;
+        }
+
+        /* COUNTDOWN */
+
+        .countdown {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        /* HATI MELAYANG */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            pointer-events: none;
+            animation: naik 6s linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes naik {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            .box {
+                padding: 25px;
+            }
+
+            .photo {
+                height: 300px;
+            }
+
+            .big-heart {
+                font-size: 70px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- =====================================
-     LOADER
-===================================== -->
-
-<div id="loader">
-
-    <div class="loader-box">
-
-        <div class="loader-heart">
-            💕
-        </div>
-
-        <div class="loader-text">
-            OUR LITTLE LOVE STORY
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================
-     NAV
-===================================== -->
-
-<nav class="nav" id="nav">
-
-    <a href="#cerita">CERITA</a>
-
-    <a href="#waktu">WAKTU</a>
-
-    <a href="#kenangan">KENANGAN</a>
-
-    <a href="#surat">SURAT</a>
-
-    <a href="#pertemuan">KETEMU</a>
-
-</nav>
-
-
-<!-- =====================================
-     OPENING
-===================================== -->
+<!-- PEMBUKA -->
 
 <div class="opening">
 
     <div class="opening-box">
 
-        <div class="eyebrow">
-            💕 Sebuah cerita kecil untukmu
-        </div>
-
         <div class="big-heart">
-            💗
+            ❤️
         </div>
 
         <h1>
-            Hai, Sayang!
+            Hai, Sayang...
         </h1>
 
-        <div class="divider"></div>
-
         <p>
-
-            Selamat datang di tempat kecil
-            yang aku buat khusus untuk kamu.
-
-            <br>
-
-            Tidak mewah...
-            tapi setiap bagian di dalamnya
-            dibuat dengan penuh rasa sayang.
-
+            Aku tahu kita sedang berjauhan.
+            Tapi aku ingin membuat sesuatu kecil
+            yang bisa mengingatkan kamu bahwa
+            ada seseorang yang selalu memikirkanmu.
         </p>
 
-        <a
-            href="#cerita"
-            class="button">
-
-            💌 Yuk, masuk!
-
+        <a href="#cerita" class="button">
+            💌 Buka Untukku
         </a>
 
     </div>
@@ -1293,41 +314,30 @@ footer{
 </div>
 
 
-<!-- =====================================
-     FOTO
-===================================== -->
+<!-- FOTO -->
 
 <section id="cerita">
 
     <div class="box">
 
-        <div class="eyebrow">
-            📸 Our Memory
-        </div>
-
         <h2>
-            Foto Kita
+            📸 Foto Kita
         </h2>
 
-        <div class="divider"></div>
+        <!--
+        FOTO HARUS BERNAMA:
+        foto-kita.jpeg
+        -->
 
-        <div class="photo-frame">
-
-            <img
-                src="foto-kita.jpeg"
-                class="photo"
-                alt="Foto kita">
-
-        </div>
+        <img
+            src="foto-kita.jpeg"
+            class="photo"
+            alt="Foto kita">
 
         <p class="photo-note">
-
-            "Satu foto mungkin terlihat sederhana,
-            tapi kenangan di baliknya
-            selalu punya cerita."
-
-            💕
-
+            Foto ini mungkin cuma sebuah gambar...
+            tapi buat aku, ini adalah salah satu
+            hal yang selalu bikin aku tersenyum ❤️
         </p>
 
     </div>
@@ -1335,144 +345,43 @@ footer{
 </section>
 
 
-<!-- =====================================
-     MEMORY
-===================================== -->
-
-<section id="kenangan">
-
-    <div class="box">
-
-        <div class="eyebrow">
-            🌸 Little Things
-        </div>
-
-        <h2>
-            Hal-Hal Kecil Tentang Kita
-        </h2>
-
-        <div class="divider"></div>
-
-        <div class="memory-grid">
-
-            <div class="memory">
-
-                <div class="memory-icon">
-                    🥰
-                </div>
-
-                <strong>
-                    Senyummu
-                </strong>
-
-                <span>
-                    favoritku
-                </span>
-
-            </div>
-
-
-            <div class="memory">
-
-                <div class="memory-icon">
-                    💬
-                </div>
-
-                <strong>
-                    Cerita Kita
-                </strong>
-
-                <span>
-                    tidak pernah membosankan
-                </span>
-
-            </div>
-
-
-            <div class="memory">
-
-                <div class="memory-icon">
-                    🧸
-                </div>
-
-                <strong>
-                    Kamu
-                </strong>
-
-                <span>
-                    tetap jadi favoritku
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================
-     MUSIC
-===================================== -->
+<!-- MUSIK -->
 
 <section>
 
     <div class="box">
 
-        <div class="eyebrow">
-            🎵 Our Song
-        </div>
-
         <h2>
-            Lagu Untuk Kita
+            🎵 Lagu Untuk Kita
         </h2>
 
-        <div class="divider"></div>
-
         <p>
-
-            Kalau kamu sedang merindukanku,
-            coba putar lagu ini.
-
-            <br>
-
-            Anggap saja aku sedang
-            duduk di sampingmu. 💕
-
+            Ada satu lagu yang ingin aku dengarkan
+            bersamamu meskipun kita sedang berjauhan. ❤️
         </p>
 
-        <audio
-            id="lagu"
-            loop>
+        <!--
+        LAGU HARUS BERNAMA:
+        lagu-kita.mp3
+        -->
 
-            <source
-                src="lagu-kita.mp3"
-                type="audio/mpeg">
-
+        <audio id="lagu" loop>
+            <source src="lagu-kita.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar audio.
         </audio>
 
-
-        <div class="music-card">
-
-            <div class="music-disc">
-                🎵
-            </div>
+        <div class="music-box">
 
             <button
                 class="music-button"
                 onclick="putarLagu()">
-
-                ▶ Putar Lagu
-
+                🎵 Putar Lagu
             </button>
 
             <div
                 class="music-status"
                 id="statusLagu">
-
                 Lagu belum diputar
-
             </div>
 
         </div>
@@ -1482,130 +391,587 @@ footer{
 </section>
 
 
-<!-- =====================================
-     COUNTER
-===================================== -->
-
-<section id="waktu">
-
-    <div class="box">
-
-        <div class="eyebrow">
-            ⏰ Our Journey
-        </div>
-
-        <h2>
-            Waktu Bersama Kita
-        </h2>
-
-        <div class="divider"></div>
-
-        <p>
-
-            Sejak
-            <strong>
-                11 Agustus 2026
-            </strong>
-
-            ❤️
-
-        </p>
-
-
-        <div class="counter">
-
-            <div class="counter-item">
-
-                <strong id="hari">
-                    0
-                </strong>
-
-                <span>
-                    Hari
-                </span>
-
-            </div>
-
-
-            <div class="counter-item">
-
-                <strong id="jam">
-                    0
-                </strong>
-
-                <span>
-                    Jam
-                </span>
-
-            </div>
-
-
-            <div class="counter-item">
-
-                <strong id="menit">
-                    0
-                </strong>
-
-                <span>
-                    Menit
-                </span>
-
-            </div>
-
-
-            <div class="counter-item">
-
-                <strong id="detik">
-                    0
-                </strong>
-
-                <span>
-                    Detik
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================
-     JARAK
-===================================== -->
+<!-- COUNTER HUBUNGAN -->
 
 <section>
 
     <div class="box">
 
-        <div class="eyebrow">
-            🌎 Long Distance
-        </div>
-
         <h2>
-            Walaupun Kita Jauh...
+            ❤️ Sudah Berapa Lama Kita Bersama?
         </h2>
 
-        <div class="divider"></div>
+        <p>
+            Sejak 11 Agustus 2026,
+            kita mulai menulis cerita kita.
+        </p>
+
+        <div class="counter">
+
+            <div class="counter-item">
+                <strong id="hari">0</strong>
+                Hari
+            </div>
+
+            <div class="counter-item">
+                <strong id="jam">0</strong>
+                Jam
+            </div>
+
+            <div class="counter-item">
+                <strong id="menit">0</strong>
+                Menit
+            </div>
+
+            <div class="counter-item">
+                <strong id="detik">0</strong>
+                Detik
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LDR -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🌎 Tentang Jarak
+        </h2>
 
         <div class="distance">
-            🌷 💕 🌷
+            🧑‍❤️‍💋‍👩
         </div>
 
         <p>
+            Kita memang tidak selalu berada
+            di tempat yang sama.
+        </p>
 
-            Mungkin sekarang kita
-            belum bisa selalu bersama.
+        <br>
 
-            <br><br>
+        <p>
+            Aku tidak bisa tiba-tiba datang
+            ketika kamu sedang kangen.
+        </p>
 
-            Tidak bisa setiap hari bertemu.
+        <p>
+            Aku juga tidak bisa langsung
+            memeluk kamu ketika kamu sedih.
+        </p>
 
-            <br><br>
+        <br>
 
-            Tidak bisa langsung memberikan
-            pelukan ketika sedang rindu.
+        <p>
+            Tapi percayalah...
+        </p>
 
-            <br><br>
+        <br>
+
+        <h3>
+            Jarak hanya memisahkan tempat,
+            bukan perasaan. ❤️
+        </h3>
+
+    </div>
+
+</section>
+
+
+<!-- TOMBOL KANGEN -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🥺 Seberapa Kangen Aku?
+        </h2>
+
+        <p>
+            Coba tekan tombol di bawah...
+        </p>
+
+        <button
+            class="button"
+            onclick="kangen()">
+            ❤️ Aku Kangen Kamu
+        </button>
+
+        <div id="kangen"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SURAT CINTA -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            💌 Ada Surat Untukmu
+        </h2>
+
+        <p>
+            Sebenarnya ada sesuatu yang ingin
+            aku katakan langsung kepadamu...
+        </p>
+
+        <button
+            class="button"
+            onclick="bukaSurat()">
+            💌 Buka Surat
+        </button>
+
+        <div id="surat" class="letter">
+
+            <p>
+                Untuk kamu yang sedang jauh di sana...
+            </p>
+
+            <br>
+
+            <p>
+                Aku mungkin tidak selalu pandai
+                mengungkapkan perasaanku.
+            </p>
+
+            <br>
+
+            <p>
+                Kadang aku cuma bisa bilang
+                "aku kangen",
+                padahal sebenarnya rasa kangennya
+                jauh lebih besar dari itu.
+            </p>
+
+            <br>
+
+            <p>
+                Terima kasih karena masih bertahan
+                bersama aku meskipun jarak kadang
+                membuat semuanya terasa sulit.
+            </p>
+
+            <br>
+
+            <p>
+                Aku tidak menjanjikan hubungan kita
+                akan selalu mudah.
+            </p>
+
+            <br>
+
+            <p>
+                Tapi aku ingin terus berusaha
+                selama kamu juga masih mau
+                berjalan bersamaku.
+            </p>
+
+            <br>
+
+            <p>
+                Sampai nanti...
+                kita tidak perlu lagi menghitung
+                berapa kilometer jarak kita.
+            </p>
+
+            <br>
+
+            <p>
+                Karena akhirnya,
+                aku bisa melihat kamu
+                bukan dari layar HP,
+                tapi tepat di depanku.
+            </p>
+
+            <br>
+
+            <h3>
+                Aku sayang kamu. ❤️
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN PERTEMUAN -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🥰 Menuju Pertemuan Kita
+        </h2>
+
+        <p>
+            Hari yang paling aku tunggu...
+        </p>
+
+        <div class="countdown" id="countdown">
+            Menghitung...
+        </div>
+
+        <p style="margin-top:20px;">
+            Kita akan bertemu pada
+            <strong>28 Oktober 2026</strong> ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PESAN TERAKHIR -->
+
+<section>
+
+    <div class="box">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Kalau Kamu Membaca Ini...
+        </h2>
+
+        <p>
+            Ingat satu hal.
+        </p>
+
+        <br>
+
+        <h3>
+            Ada seseorang di sini
+            yang selalu memilih kamu.
+        </h3>
+
+        <br>
+
+        <p>
+            Bahkan ketika jarak mencoba
+            membuat semuanya terasa sulit.
+        </p>
+
+        <br>
+
+        <h2>
+            I Love You ❤️
+        </h2>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    Dibuat dengan ❤️
+    <br>
+    khusus untuk orang yang paling aku sayang.
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   TANGGAL MULAI HUBUNGAN
+=====================================
+
+   11 AGUSTUS 2026
+
+   JavaScript:
+   Tahun = 2026
+   Bulan Agustus = 7
+   Tanggal = 11
+
+===================================== */
+
+const tanggalMulai =
+    new Date(2026, 7, 11);
+
+
+/* COUNTER HUBUNGAN */
+
+function updateCounter() {
+
+    const sekarang = new Date();
+
+    const selisih =
+        sekarang - tanggalMulai;
+
+    const totalDetik =
+        Math.floor(selisih / 1000);
+
+    const hari =
+        Math.floor(totalDetik / 86400);
+
+    const jam =
+        Math.floor(
+            (totalDetik % 86400) / 3600
+        );
+
+    const menit =
+        Math.floor(
+            (totalDetik % 3600) / 60
+        );
+
+    const detik =
+        totalDetik % 60;
+
+
+    document.getElementById("hari")
+        .innerText = hari;
+
+    document.getElementById("jam")
+        .innerText = jam;
+
+    document.getElementById("menit")
+        .innerText = menit;
+
+    document.getElementById("detik")
+        .innerText = detik;
+
+}
+
+
+setInterval(updateCounter, 1000);
+
+updateCounter();
+
+
+/* =====================================
+   PEMUTAR MUSIK
+===================================== */
+
+function putarLagu() {
+
+    const lagu =
+        document.getElementById("lagu");
+
+    const tombol =
+        document.querySelector(".music-button");
+
+    const status =
+        document.getElementById("statusLagu");
+
+
+    if (lagu.paused) {
+
+        lagu.play();
+
+        tombol.innerHTML =
+            "⏸️ Jeda Lagu";
+
+        status.innerHTML =
+            "🎵 Sekarang sedang memutar lagu ❤️";
+
+    } else {
+
+        lagu.pause();
+
+        tombol.innerHTML =
+            "🎵 Putar Lagu";
+
+        status.innerHTML =
+            "Lagu dijeda";
+
+    }
+
+}
+
+
+/* =====================================
+   TOMBOL KANGEN
+===================================== */
+
+function kangen() {
+
+    const pesan =
+        document.getElementById("kangen");
+
+    const daftar = [
+
+        "Aku kangen kamu ❤️",
+
+        "Kangennya sudah level tidak bisa dijelaskan 😭❤️",
+
+        "Aku ingin ketemu kamu sekarang 🥺",
+
+        "Jaraknya boleh jauh, tapi kamu tetap dekat di hati ❤️",
+
+        "Tolong jangan bikin aku kangen terus 😭",
+
+        "Aku butuh teleportasi sekarang juga 😂❤️",
+
+        "Kangen banget sampai WiFi pun terasa tidak cukup 😭😂❤️"
+
+    ];
+
+
+    const random =
+        daftar[
+            Math.floor(
+                Math.random() * daftar.length
+            )
+        ];
+
+
+    pesan.innerText = random;
+
+}
+
+
+/* =====================================
+   SURAT CINTA
+===================================== */
+
+function bukaSurat() {
+
+    const surat =
+        document.getElementById("surat");
+
+
+    if (surat.style.display === "block") {
+
+        surat.style.display = "none";
+
+    } else {
+
+        surat.style.display = "block";
+
+    }
+
+}
+
+
+/* =====================================
+   COUNTDOWN PERTEMUAN
+=====================================
+
+   28 OKTOBER 2026
+
+===================================== */
+
+const tanggalPertemuan =
+    new Date("October 28, 2026 00:00:00");
+
+
+function updateCountdown() {
+
+    const sekarang =
+        new Date();
+
+    const jarak =
+        tanggalPertemuan - sekarang;
+
+
+    if (jarak <= 0) {
+
+        document.getElementById("countdown")
+            .innerHTML =
+            "❤️ HARI INI KITA KETEMU! ❤️";
+
+        return;
+
+    }
+
+
+    const hari =
+        Math.floor(
+            jarak / (1000 * 60 * 60 * 24)
+        );
+
+    const jam =
+        Math.floor(
+            (jarak / (1000 * 60 * 60)) % 24
+        );
+
+    const menit =
+        Math.floor(
+            (jarak / (1000 * 60)) % 60
+        );
+
+    const detik =
+        Math.floor(
+            (jarak / 1000) % 60
+        );
+
+
+    document.getElementById("countdown")
+        .innerHTML =
+        hari + " hari " +
+        jam + " jam " +
+        menit + " menit " +
+        detik + " detik ❤️";
+
+}
+
+
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
+
+
+/* =====================================
+   ANIMASI HATI
+===================================== */
+
+function buatHati() {
+
+    const hati =
+        document.createElement("div");
+
+    hati.className =
+        "floating-heart";
+
+    hati.innerHTML =
+        ["❤️","💕","💗","💖","💘"]
+        [Math.floor(Math.random() * 5)];
+
+
+    hati.style.left =
+        Math.random() * 100 + "vw";
+
+
+    hati.style.fontSize =
+        (Math.random() * 20 + 15) + "px";
+
+
+    hati.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+
+    document.body.appendChild(hati);
+
+
+    setTimeout(() => {
+
+        hati.remove();
+
+    }, 7000);
+
+}
+
+
+setInterval(buatHati, 600);
+
+</script>
+
+</body>
+</html>

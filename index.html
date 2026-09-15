@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Kamu ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .opening {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .opening-box {
+            max-width: 600px;
+        }
+
+        .big-heart {
+            font-size: 90px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 20px 0;
+        }
+
+        .opening p {
+            font-size: 19px;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            border: none;
+            padding: 14px 25px;
+            margin-top: 25px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.08);
+        }
+
+        section {
+            padding: 70px 20px;
+        }
+
+        .box {
+            max-width: 750px;
+            margin: auto;
+            background: rgba(255,255,255,0.16);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        /* FOTO */
+
+        .photo {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 25px;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid rgba(255,255,255,0.7);
+        }
+
+        .photo-note {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* MUSIK */
+
+        .music-box {
+            margin-top: 25px;
+        }
+
+        .music-button {
+            display: inline-block;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: white;
+            color: #ff4f81;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .music-button:hover {
+            transform: scale(1.08);
+        }
+
+        .music-status {
+            margin-top: 12px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* COUNTER */
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .counter-item {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .counter-item strong {
+            display: block;
+            font-size: 30px;
+        }
+
+        /* JARAK */
+
+        .distance {
+            font-size: 50px;
+            margin: 25px;
+        }
+
+        /* SURAT */
+
+        .letter {
+            display: none;
+            margin-top: 30px;
+            background: rgba(255,255,255,0.9);
+            color: #444;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: left;
+            line-height: 1.9;
+            animation: muncul 0.8s;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* KANGEN */
+
+        #kangen {
+            font-size: 25px;
+            margin-top: 20px;
+            min-height: 40px;
+        }
+
+        /* COUNTDOWN */
+
+        .countdown {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        /* HATI MELAYANG */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -40px;
+            pointer-events: none;
+            animation: naik 6s linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes naik {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 34px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            .box {
+                padding: 25px;
+            }
+
+            .photo {
+                height: 300px;
+            }
+
+            .big-heart {
+                font-size: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- PEMBUKA -->
+
+<div class="opening">
+
+    <div class="opening-box">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Hai, Sayang...
+        </h1>
+
+        <p>
+            Aku tahu kita sedang berjauhan.
+            Tapi aku ingin membuat sesuatu kecil
+            yang bisa mengingatkan kamu bahwa
+            ada seseorang yang selalu memikirkanmu.
+        </p>
+
+        <a href="#cerita" class="button">
+            💌 Buka Untukku
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FOTO -->
+
+<section id="cerita">
+
+    <div class="box">
+
+        <h2>
+            📸 Foto Kita
+        </h2>
+
+        <!--
+        FOTO HARUS BERNAMA:
+        foto-kita.jpeg
+        -->
+
+        <img
+            src="foto-kita.jpeg"
+            class="photo"
+            alt="Foto kita">
+
+        <p class="photo-note">
+            Foto ini mungkin cuma sebuah gambar...
+            tapi buat aku, ini adalah salah satu
+            hal yang selalu bikin aku tersenyum ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIK -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🎵 Lagu Untuk Kita
+        </h2>
+
+        <p>
+            Ada satu lagu yang ingin aku dengarkan
+            bersamamu meskipun kita sedang berjauhan. ❤️
+        </p>
+
+        <!--
+        LAGU HARUS BERNAMA:
+        lagu-kita.mp3
+        -->
+
+        <audio id="lagu" loop>
+            <source src="lagu-kita.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar audio.
+        </audio>
+
+        <div class="music-box">
+
+            <button
+                class="music-button"
+                onclick="putarLagu()">
+                🎵 Putar Lagu
+            </button>
+
+            <div
+                class="music-status"
+                id="statusLagu">
+                Lagu belum diputar
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTER HUBUNGAN -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            ❤️ Sudah Berapa Lama Kita Bersama?
+        </h2>
+
+        <p>
+            Sejak 11 Agustus 2026,
+            kita mulai menulis cerita kita.
+        </p>
+
+        <div class="counter">
+
+            <div class="counter-item">
+                <strong id="hari">0</strong>
+                Hari
+            </div>
+
+            <div class="counter-item">
+                <strong id="jam">0</strong>
+                Jam
+            </div>
+
+            <div class="counter-item">
+                <strong id="menit">0</strong>
+                Menit
+            </div>
+
+            <div class="counter-item">
+                <strong id="detik">0</strong>
+                Detik
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LDR -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🌎 Tentang Jarak
+        </h2>
+
+        <div class="distance">
+            🧑‍❤️‍💋‍👩
+        </div>
+
+        <p>
+            Kita memang tidak selalu berada
+            di tempat yang sama.
+        </p>
+
+        <br>
+
+        <p>
+            Aku tidak bisa tiba-tiba datang
+            ketika kamu sedang kangen.
+        </p>
+
+        <p>
+            Aku juga tidak bisa langsung
+            memeluk kamu ketika kamu sedih.
+        </p>
+
+        <br>
+
+        <p>
+            Tapi percayalah...
+        </p>
+
+        <br>
+
+        <h3>
+            Jarak hanya memisahkan tempat,
+            bukan perasaan. ❤️
+        </h3>
+
+    </div>
+
+</section>
+
+
+<!-- TOMBOL KANGEN -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🥺 Seberapa Kangen Aku?
+        </h2>
+
+        <p>
+            Coba tekan tombol di bawah...
+        </p>
+
+        <button
+            class="button"
+            onclick="kangen()">
+            ❤️ Aku Kangen Kamu
+        </button>
+
+        <div id="kangen"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SURAT CINTA -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            💌 Ada Surat Untukmu
+        </h2>
+
+        <p>
+            Sebenarnya ada sesuatu yang ingin
+            aku katakan langsung kepadamu...
+        </p>
+
+        <button
+            class="button"
+            onclick="bukaSurat()">
+            💌 Buka Surat
+        </button>
+
+        <div id="surat" class="letter">
+
+            <p>
+                Untuk kamu yang sedang jauh di sana...
+            </p>
+
+            <br>
+
+            <p>
+                Aku mungkin tidak selalu pandai
+                mengungkapkan perasaanku.
+            </p>
+
+            <br>
+
+            <p>
+                Kadang aku cuma bisa bilang
+                "aku kangen",
+                padahal sebenarnya rasa kangennya
+                jauh lebih besar dari itu.
+            </p>
+
+            <br>
+
+            <p>
+                Terima kasih karena masih bertahan
+                bersama aku meskipun jarak kadang
+                membuat semuanya terasa sulit.
+            </p>
+
+            <br>
+
+            <p>
+                Aku tidak menjanjikan hubungan kita
+                akan selalu mudah.
+            </p>
+
+            <br>
+
+            <p>
+                Tapi aku ingin terus berusaha
+                selama kamu juga masih mau
+                berjalan bersamaku.
+            </p>
+
+            <br>
+
+            <p>
+                Sampai nanti...
+                kita tidak perlu lagi menghitung
+                berapa kilometer jarak kita.
+            </p>
+
+            <br>
+
+            <p>
+                Karena akhirnya,
+                aku bisa melihat kamu
+                bukan dari layar HP,
+                tapi tepat di depanku.
+            </p>
+
+            <br>
+
+            <h3>
+                Aku sayang kamu. ❤️
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN PERTEMUAN -->
+
+<section>
+
+    <div class="box">
+
+        <h2>
+            🥰 Menuju Pertemuan Kita
+        </h2>
+
+        <p>
+            Hari yang paling aku tunggu...
+        </p>
+
+        <div class="countdown" id="countdown">
+            Menghitung...
+        </div>
+
+        <p style="margin-top:20px;">
+            Kita akan bertemu pada
+            <strong>28 Oktober 2026</strong> ❤️
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PESAN TERAKHIR -->
+
+<section>
+
+    <div class="box">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Kalau Kamu Membaca Ini...
+        </h2>
+
+        <p>
+            Ingat satu hal.
+        </p>
+
+        <br>
+
+        <h3>
+            Ada seseorang di sini
+            yang selalu memilih kamu.
+        </h3>
+
+        <br>
+
+        <p>
+            Bahkan ketika jarak mencoba
+            membuat semuanya terasa sulit.
+        </p>
+
+        <br>
+
+        <h2>
+            I Love You ❤️
+        </h2>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    Dibuat dengan ❤️
+    <br>
+    khusus untuk orang yang paling aku sayang.
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   TANGGAL MULAI HUBUNGAN
+=====================================
+
+   11 AGUSTUS 2026
+
+   JavaScript:
+   Tahun = 2026
+   Bulan Agustus = 7
+   Tanggal = 11
+
+===================================== */
+
+const tanggalMulai =
+    new Date(2026, 7, 11);
+
+
+/* COUNTER HUBUNGAN */
+
+function updateCounter() {
+
+    const sekarang = new Date();
+
+    const selisih =
+        sekarang - tanggalMulai;
+
+    const totalDetik =
+        Math.floor(selisih / 1000);
+
+    const hari =
+        Math.floor(totalDetik / 86400);
+
+    const jam =
+        Math.floor(
+            (totalDetik % 86400) / 3600
+        );
+
+    const menit =
+        Math.floor(
+            (totalDetik % 3600) / 60
+        );
+
+    const detik =
+        totalDetik % 60;
+
+
+    document.getElementById("hari")
+        .innerText = hari;
+
+    document.getElementById("jam")
+        .innerText = jam;
+
+    document.getElementById("menit")
+        .innerText = menit;
+
+    document.getElementById("detik")
+        .innerText = detik;
+
+}
+
+
+setInterval(updateCounter, 1000);
+
+updateCounter();
+
+
+/* =====================================
+   PEMUTAR MUSIK
+===================================== */
+
+function putarLagu() {
+
+    const lagu =
+        document.getElementById("lagu");
+
+    const tombol =
+        document.querySelector(".music-button");
+
+    const status =
+        document.getElementById("statusLagu");
+
+
+    if (lagu.paused) {
+
+        lagu.play();
+
+        tombol.innerHTML =
+            "⏸️ Jeda Lagu";
+
+        status.innerHTML =
+            "🎵 Sekarang sedang memutar lagu ❤️";
+
+    } else {
+
+        lagu.pause();
+
+        tombol.innerHTML =
+            "🎵 Putar Lagu";
+
+        status.innerHTML =
+            "Lagu dijeda";
+
+    }
+
+}
+
+
+/* =====================================
+   TOMBOL KANGEN
+===================================== */
+
+function kangen() {
+
+    const pesan =
+        document.getElementById("kangen");
+
+    const daftar = [
+
+        "Aku kangen kamu ❤️",
+
+        "Kangennya sudah level tidak bisa dijelaskan 😭❤️",
+
+        "Aku ingin ketemu kamu sekarang 🥺",
+
+        "Jaraknya boleh jauh, tapi kamu tetap dekat di hati ❤️",
+
+        "Tolong jangan bikin aku kangen terus 😭",
+
+        "Aku butuh teleportasi sekarang juga 😂❤️",
+
+        "Kangen banget sampai WiFi pun terasa tidak cukup 😭😂❤️"
+
+    ];
+
+
+    const random =
+        daftar[
+            Math.floor(
+                Math.random() * daftar.length
+            )
+        ];
+
+
+    pesan.innerText = random;
+
+}
+
+
+/* =====================================
+   SURAT CINTA
+===================================== */
+
+function bukaSurat() {
+
+    const surat =
+        document.getElementById("surat");
+
+
+    if (surat.style.display === "block") {
+
+        surat.style.display = "none";
+
+    } else {
+
+        surat.style.display = "block";
+
+    }
+
+}
+
+
+/* =====================================
+   COUNTDOWN PERTEMUAN
+=====================================
+
+   28 OKTOBER 2026
+
+===================================== */
+
+const tanggalPertemuan =
+    new Date("October 28, 2026 00:00:00");
+
+
+function updateCountdown() {
+
+    const sekarang =
+        new Date();
+
+    const jarak =
+        tanggalPertemuan - sekarang;
+
+
+    if (jarak <= 0) {
+
+        document.getElementById("countdown")
+            .innerHTML =
+            "❤️ HARI INI KITA KETEMU! ❤️";
+
+        return;
+
+    }
+
+
+    const hari =
+        Math.floor(
+            jarak / (1000 * 60 * 60 * 24)
+        );
+
+    const jam =
+        Math.floor(
+            (jarak / (1000 * 60 * 60)) % 24
+        );
+
+    const menit =
+        Math.floor(
+            (jarak / (1000 * 60)) % 60
+        );
+
+    const detik =
+        Math.floor(
+            (jarak / 1000) % 60
+        );
+
+
+    document.getElementById("countdown")
+        .innerHTML =
+        hari + " hari " +
+        jam + " jam " +
+        menit + " menit " +
+        detik + " detik ❤️";
+
+}
+
+
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
+
+
+/* =====================================
+   ANIMASI HATI
+===================================== */
+
+function buatHati() {
+
+    const hati =
+        document.createElement("div");
+
+    hati.className =
+        "floating-heart";
+
+    hati.innerHTML =
+        ["❤️","💕","💗","💖","💘"]
+        [Math.floor(Math.random() * 5)];
+
+
+    hati.style.left =
+        Math.random() * 100 + "vw";
+
+
+    hati.style.fontSize =
+        (Math.random() * 20 + 15) + "px";
+
+
+    hati.style.animationDuration =
+        (Math.random() * 3 + 4) + "s";
+
+
+    document.body.appendChild(hati);
+
+
+    setTimeout(() => {
+
+        hati.remove();
+
+    }, 7000);
+
+}
+
+
+setInterval(buatHati, 600);
+
+</script>
+
+</body>
+</html>
+```
